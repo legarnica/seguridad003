@@ -35,6 +35,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+        // acá se usa nuestro (AuthServiceImpl), para personalizar.
+        // el inicio de sesión o la carga del usuario prinsipal User.
         auth.userDetailsService(servicioDetallesDeUsuario).passwordEncoder(EncoderUtils.passwordEncoder());
 //        String adminUsername = "admin@mail.cl";
 //        String adminPassword = EncoderUtils.passwordEncoder().encode("1234");
@@ -62,21 +64,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         // configurar los request autorizados
         .authorizeRequests()
         //acceso a direcctorios
-        .antMatchers("/auth/**").permitAll()
-        .antMatchers("/home/**").permitAll()
-        .antMatchers("/admin/**").hasRole("ADMIN")
+        .antMatchers("/admin/**").hasRole("ADMIN") // no es ROLE_ADMIN ni ROLE_USER (sin el ROLE_)
         .antMatchers("/login").permitAll()
         // permite el uso de los recursos estáticos
         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
         // para todo el resto de peticiones, permite, si está logeado
         .anyRequest().authenticated()
         // indicar el login personalizado
-        .and().formLogin().loginPage("/login").successHandler(manejadorDeAutentificacion)
+        .and().formLogin().loginPage("/login")
+        // ocupamos nuestra clase personalizada
+        // ManejadorDeAutentificacionPersonalizado
+        .successHandler(manejadorDeAutentificacion)
         // indicar en caso de fallo, donde ir y con qué
         .failureUrl("/login?error=true")
         // indicar campos name en los imput
         // de usuario y contraseña
-        .usernameParameter("email").passwordParameter("password")
+        .usernameParameter("correo").passwordParameter("contrasenia")
         // indicamos la url de éxito
 //        .defaultSuccessUrl("/")
         // manejamos el recurso no permitido

@@ -1,10 +1,5 @@
 package cl.lherrera.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import cl.lherrera.dto.PersonaDto;
 import cl.lherrera.model.dto.UsuarioDto;
 import cl.lherrera.model.entity.Usuario;
 import cl.lherrera.service.UsuarioService;

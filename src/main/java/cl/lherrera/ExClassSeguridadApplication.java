@@ -36,6 +36,12 @@ class AppStartupRunner implements ApplicationRunner {
         
         servicioUsuario.registrarUsuario(usuario);
         
+//        usuario.setNombre("usuario");
+//        usuario.setCorreo("user@mail.cl");
+//        usuario.setContrasenia("1234");
+//        usuario.setRol(Rol.ROLE_USER);
+//        servicioUsuario.registrarUsuario(usuario);
+        
     }
     
 }

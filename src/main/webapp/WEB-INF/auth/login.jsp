@@ -54,16 +54,16 @@
 									<form action="<c:url value='/login' />" method="post">
 
 										<div class="form-group">
-											<label class="small mb-1" for="inputEmailAddress">Correo</label>
-											<input id="email" name="email" class="form-control py-4"
+											<label class="small mb-1" for="correo">Correo</label>
+											<input id="correo" name="correo" class="form-control py-4"
 												id="inputEmailAddress" type="email"
 												placeholder="Ingrese su correo" />
 										</div>
 
 										<div class="form-group">
 											<label class="small mb-1" for="inputPassword">Contraseña</label>
-											<input id="password" name="password"
-												class="form-control py-4" id="inputPassword" type="password"
+											<input id="contrasenia" name="contrasenia"
+												class="form-control py-4" type="password"
 												placeholder="Ingrese su contraseña" />
 										</div>
 
