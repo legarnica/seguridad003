@@ -71,14 +71,7 @@
 			<optional>true</optional>
 		</dependency>
 		<!-- DevsTools # -->
-
-		<!-- lombok - SUPPORT -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<!-- lombok - SUPPORT # -->
+		
 		
 	</dependencies>
 
