@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,10 +16,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cl.lherrera.dto.PersonaDto;
+import cl.lherrera.model.dto.UsuarioDto;
+import cl.lherrera.model.entity.Usuario;
+import cl.lherrera.service.UsuarioService;
 
 @Controller
 @RequestMapping("admin")
 public class AdminController {
+    
+    @Autowired
+    private UsuarioService servicio;
     
     @GetMapping
     public String admin(ModelMap modelo) {
@@ -32,25 +39,11 @@ public class AdminController {
     }
     
     @PostMapping
-    public String persona(
-        HttpSession session,
-        @ModelAttribute PersonaDto persona
-    ) {
-        List<PersonaDto> personas = new ArrayList<>();
-        
-        // si es que existen personas en sesión, estas se cargan
-        // antes que se cargue lo que llegó por el formulario
-        if(session.getAttribute("personas") != null) {
-            @SuppressWarnings("unchecked")
-            List<PersonaDto> personasEnSession = (List<PersonaDto>) session.getAttribute("personas");
-            personas.addAll(personasEnSession);
-        }
-        
-        personas.add(persona);
-        
-        session.setAttribute("personas", personas);
-        
+    public String usuario( @ModelAttribute Usuario usuario) {
+        UsuarioDto usuarioDto = servicio.registrarUsuario(usuario);
+        if(usuarioDto.getUsuario() == null)
+            return "admin";
+
         return "redirect:home";
-        
     }
 }

@@ -92,6 +92,8 @@
 											<th>Id</th>
 											<th>Nombre</th>
 											<th>Correo</th>
+											<th>Contrasenia</th>
+											<th>Rol</th>
 										</tr>
 									</thead>
 									<tfoot>
@@ -99,14 +101,18 @@
 											<th>Id</th>
 											<th>Nombre</th>
 											<th>Correo</th>
+											<th>Contrasenia</th>
+											<th>Rol</th>
 										</tr>
 									</tfoot>
 									<tbody>
-										<c:forEach var="persona" items="${sessionScope.personas}">
+										<c:forEach var="usuario" items="${usuarioDto.usuarios}">
 											<tr>
-												<td>${persona.id}</td>
-												<td>${persona.nombre}</td>
-												<td>${persona.correo}</td>
+												<td>${usuario.id}</td>
+												<td>${usuario.nombre}</td>
+												<td>${usuario.correo}</td>
+												<td>${usuario.contrasenia.substring(0, 10)}***</td>
+												<td>${usuario.rol}</td>
 											</tr>
 										</c:forEach>
 
