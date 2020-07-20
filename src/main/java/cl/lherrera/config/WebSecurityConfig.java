@@ -37,7 +37,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         // acá se usa nuestro (AuthServiceImpl), para personalizar.
         // el inicio de sesión o la carga del usuario prinsipal User.
-        auth.userDetailsService(servicioDetallesDeUsuario).passwordEncoder(EncoderUtils.passwordEncoder());
+        auth.userDetailsService(servicioDetallesDeUsuario)
+        .passwordEncoder(EncoderUtils.passwordEncoder());
 //        String adminUsername = "admin@mail.cl";
 //        String adminPassword = EncoderUtils.passwordEncoder().encode("1234");
 //        String adminRole = "ADMIN";
